@@ -3,5 +3,5 @@
 {{config('app.name')}} | Admin
 @endsection
 @section('content')
-
+    Hello
 @endsection

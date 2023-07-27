@@ -33,6 +33,12 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.store');
+                
+    Route::get('{provider}/social-login', [AuthenticatedSessionController::class, 'socialLogin'])
+        ->name('social.login');
+
+    Route::get('{provider}/social-callback', [AuthenticatedSessionController::class, 'socialCallback'])
+        ->name('callback');
 });
 
 Route::middleware('auth')->group(function () {

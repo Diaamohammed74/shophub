@@ -1,25 +1,17 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace Modules\Category\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateCategoryRequest extends FormRequest
+class categoryCreate extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         return [
             'name'=>['required','string'],
@@ -29,5 +21,15 @@ class CreateCategoryRequest extends FormRequest
             'parent-category'=>['sometimes', 'nullable'],
             // 'parent-category'=>['required'],
         ];
+    }
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
     }
 }
